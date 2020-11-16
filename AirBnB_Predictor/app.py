@@ -11,5 +11,19 @@ def create_app():
     @app.route('/button')
     def button_click():
         return "Hello World! You've clicked me."
+    
+    # @app.route('/new')
+    # def new_listing():
+    #     return render_template("base.html")
+
+    # @app.route('/add', methods=["POST"])
+    # @app.route('/listings', methods=["GET"])
+    # def add_listing():
+    #     if request.method == "POST":
+    #         add_listing()
+        
+    #     return render_template("listings.html", listings=Listings.query.all())
+    
+    
         
     return app
