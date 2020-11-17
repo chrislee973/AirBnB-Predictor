@@ -8,6 +8,12 @@
       .myCoolButton {
     background: #85144b;
     }
+      .form-color {
+        background-color: #d4abb4fb;
+      }
+      h2 {
+        font-family: monospace;
+      }
   </style>
   <body>
     <nav>
@@ -20,22 +26,25 @@
       </div>
     </nav>
     <br><br>
+    {% block content %}
     <h2 style="text-align: center;">Airbnb Predictor!</h2>
     <p style="text-align: center;">Enter some information about the property you have listed or would like to list, and we'll tell you the optimal rate to charge.</p>
     <hr>
-    <div class = "flex three grow demo" style="background-color: beige;">
-        <label><span>Name of listing</span><input type="text"></label>
-        <label><span>City</span>
-            <select>
-            <option>New York City</option>
-            <option>Los Angeles</option>
-            <option>Washington DC</option>
-            <option>Chicago</option>
+    <div class = "flex three grow demo, form-color">
+      <form action="/add" method="post">
+        <label><span>Name of listing</span><input type="text" name="listing_name" required></label>
+        <label for="city"><span>City</span>
+            <select name="city" id="city"> 
+            <option value="NYC">New York City</option>
+            <option value="LA">Los Angeles</option>
+            <option value ="DC">Washington DC</option>
+            <option value="Chicago">Chicago</option>
           </select>
         </label>
-        <label><span>Zipcode</span><input type="text"></label>
-        <label><span>Description of listing</span><input type="text"></label>
-        <label><span>Amenities</span><input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc."></label>
+        <label><span>Zipcode</span><input type="text" name="listing_zipcode"></label>
+        <label><span>Description of listing</span><input type="text" name="listing_description"></label>
+        <label><span>Amenities</span><input type="text" name= "listing_amenities" placeholder="Cable TV, family friendly, washer, dryer, etc."></label>
+        <!--
         <label><span>Room type</span>
             <select>
                 <option>Entire home/apt</option>
@@ -47,11 +56,11 @@
         <label><span>Number of bedrooms</span><input type="text"></label>
         <label><span>Number of beds</span><input type="text"></label>
         <label><span>How many people does your listing accomodate?</span><input type="text"></label>
-        <label><span>Do you charge a cleaning fee?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
+        <label for="cleaning"><span>Do you charge a cleaning fee?</span>
+          <input id="cleaning" type = "checkbox" name="cleaning" value="yes">Yes
+        </label>
+        <label>
+          <input id="cleaning" type = "checkbox" name="cleaning" value="no">No
         </label>
         <label><span>Are you a verified host?</span>
             <select>
@@ -69,14 +78,19 @@
               </select>
         </label>
         <label><span>How many reviews does this listing have?</span><input type="text"></label>
-        <label><span>What is your review score rating?</span><input type="text"></label>
+        <label><span>What is your review score rating?</span><input type="text"></label>-->
+        <button type="submit">Add listing</button>
+      </form>
     </div>
     <hr>
+    {% endblock %}
+    <!--
     <form action="/button">
         <div style="text-align: center;">
             <button class="myCoolButton">Add listing</button>
         </div>
     </form>
+    -->
     
    
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->

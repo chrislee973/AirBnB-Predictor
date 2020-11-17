@@ -1,0 +1,13 @@
+{% extends "test.html" %}
+
+{% block content %}
+<div>
+    <h2>{{ title }}</h2>
+</div>
+
+<div>
+    {% for listing in listings %}
+    <a href="#"><span class="stack">{{ listing.name }}</span></a>
+    {% endfor %}
+</div>
+{% endblock %}
