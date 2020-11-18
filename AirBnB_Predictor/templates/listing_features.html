@@ -1,0 +1,37 @@
+{% extends "test.html" %}
+
+{% block content %}
+<form action="/adjust_listing/{{ listing.listing_name }}">
+    <table class="primary">
+        <thead>
+            <tr>
+                <th style="background-color: #85144b;">Features</th>
+                <th style="background-color: #85144b;">Feature(s) Selected</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>{{ listing_name }}</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>{{ listing.city }}</td>
+            </tr>
+            <tr>
+                <td>Zipcode</td>
+                <td>{{ listing.zipcode }}</td>
+            </tr>
+            <tr>
+                <td>Cleaning Fee</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pets Allowed</td>
+                <td>Yes</td>
+            </tr>
+        </tbody>
+    </table>
+    <input name="adjust_settings_button" type="submit" value="Adjust settings" style="background-color: #85144b;">
+</form>
+{% endblock %}

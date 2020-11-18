@@ -11,37 +11,38 @@
   </style>
   <body>
     <nav>
-      <!-- <a href="/" class="brand"><span>AirBnB Predictor</span></a> -->
-      <a href="/" class="brand"><span><img src="{{url_for('static', filename='airbnb_logo.png')}}" width="100" height="100"/></span></a>
-    
+      <a href="/" class="brand"><span>AirBnB Predictor</span></a>
+
       <div class="menu">
         <a href = "/listings">My listings</a>
-        <a href = "/about" class="button icon-help-circled">About</a>
+        <a href = "/about">About</a>
         <a href='/new_listing' class="button">+ New listing</a>
         <a href="/reset" class="button">Reset DB</a>
       </div>
     </nav>
     <br><br>
     {% block content %}
-    <!-- <h2 style="text-align: center;">Airbnb Predictor!</h2> -->
-    <div style="text-align: center;"><img src="{{url_for('static', filename='airbnb_logo.png')}}"/></div>
-    <p style="text-align: center;">Enter some information about the property you have listed or would like to list, and we'll tell you the optimal rate to charge.</p>
+    <h2 style="text-align: center;">Airbnb Predictor!</h2>
+    <p style="text-align: center;">Note that this will alter {{ listing_name}}'s features. To create a separate listing, click on New Listing.</p>
     <hr>
     <form action="/add_listing", methods="post">
     <div class = "flex three grow demo" style="background-color: beige;">
         <label><span>Name of listing</span>
-          <input type="text" name="listing_name" required>
+          <input type="text" name="listing_name" value="{{ listing_name }}" readonly>
         </label>
         <label for="city"><span>City</span>
-          <select id="city" name="city">
-            <option value="New York City">New York City</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Washington DC">Washington DC</option>
-            <option value="Chicago">Chicago</option>
+          <select name="city" id="city">
+            {% for each_city in all_cities %}
+            {% if listing.city == each_city %}
+            <option value="{{ listing.city }}" selected>{{ listing.city }}</option>
+            {% else %}
+            <option value="{{ each_city}}">{{ each_city}}</option>
+            {% endif %}
+            {% endfor %}
           </select>
         </label>
         <label><span>Zipcode</span>
-          <input type="text" name="zipcode">
+          <input type="text" name="zipcode" value="{{ listing.zipcode }}">
         </label>
         <label><span>Description of listing</span>
           <input type="text">
@@ -84,7 +85,7 @@
       </div>
       <hr>
       <div style="text-align: center;">
-        <input name="add_listing_button" type="submit" value="Add listing" style="background-color: #85144b;">
+        <input name="update_listing_button" type="submit" value="Update listing" style="background-color: #85144b;">
         <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
     </div>
     </form>
