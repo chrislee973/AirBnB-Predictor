@@ -11,7 +11,7 @@
   </style>
   <body>
     <nav>
-      <a href="/" class="brand"><span>AirBnB Predictor</span></a>
+      <a href="/" class="brand"><span><img src="{{url_for('static', filename='airbnb_logo.png')}}" width="100" height="100"/></span></a>
 
       <div class="menu">
         <a href = "/listings">My listings</a>
@@ -22,13 +22,13 @@
     </nav>
     <br><br>
     {% block content %}
-    <h2 style="text-align: center;">Airbnb Predictor!</h2>
+    <div style="text-align: center;"><img src="{{url_for('static', filename='airbnb_logo.png')}}"/></div>
     <p style="text-align: center;">Enter some information about the property you have listed or would like to list, and we'll tell you the optimal rate to charge.</p>
     <hr>
     <form action="/add_listing", methods="post">
     <div class = "flex three grow demo" style="background-color: beige;">
         <label><span>Name of listing</span>
-          <input type="text" name="listing_name" value={{ listing_name }}>
+          <input type="text" name="listing_name" value="{{ listing_name }}">
         </label>
         <label><span>City</span>
             <select name="city">
@@ -39,46 +39,86 @@
           </select>
         </label>
         <label><span>Zipcode</span>
-          <input type="text" name="zipcode">
+          <input type="text" name="zipcode" value={{zipcode}}>
         </label>
         <label><span>Description of listing</span>
-          <input type="text">
+          <input type="text" name="description">
         </label>
-        <label><span>Amenities</span><input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc."></label>
+        <label><span>Amenities</span>
+          <input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc." name="amenities">
+        </label>
+        <label><span>Property type</span>
+          <select name="property_type">
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Condominium">Condominium</option>
+            <option value="Loft">Loft</option>
+          </select>
+        </label>
         <label><span>Room type</span>
-            <select>
-                <option>Entire home/apt</option>
-                <option>Private room</option>
-                <option>Shared Room</option>
-              </select>
+            <select name="room_type">
+              <option value="Entire home/apt">Entire home/apt</option>
+              <option value="Private room">Private room</option>
+              <option value="Shared Room">Shared Room</option>
+            </select>
+          </label>
+        <label><span>Number of bathrooms</span>
+          <input type="text" name="bathrooms">
         </label>
-        <label><span>Number of bathrooms</span><input type="text"></label>
-        <label><span>Number of bedrooms</span><input type="text"></label>
-        <label><span>Number of beds</span><input type="text"></label>
-        <label><span>How many people does your listing accomodate?</span><input type="text"></label>
+        <label><span>Number of bedrooms</span>
+          <input type="text" name="bedrooms">
+        </label>
+        <label><span>Number of beds</span>
+          <input type="text" name="beds">
+        </label>
+        <label><span>What type of bed do you have?</span>
+          <select name="bed_type">
+              <option value="Real bed">Real bed</option>
+              <option value="Futon">Futon</option>
+              <option value="Pull out sofa">Pull out sofa</option>
+              <option value="Airbed">Airbed</option>
+              <option value="Couch">Couch</option>
+            </select>
+      </label>
+        <label><span>How many people does your listing accommodate?</span>
+          <input type="text" name="accommodates">
+        </label>
         <label><span>Do you charge a cleaning fee?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
+            <select name="cleaning_fee">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
               </select>
         </label>
+        <label><span>Do you have a profile picture?</span>
+          <select name="host_has_profile_pic">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+      </label>
         <label><span>Are you a verified host?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
+            <select name="host_identity_verified">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
               </select>
         </label>
-        <label><span>What was the date of this listing's first review?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
-        <label><span>What was the date of this listing's most recent review?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
-        <label><span>When did you first become a host?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
         <label><span>Is this listing instant bookable?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
+            <select name="instant_bookable">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
               </select>
         </label>
-        <label><span>How many reviews does this listing have?</span><input type="text"></label>
-        <label><span>What is your review score rating?</span><input type="text"></label>
+        <label><span>How many reviews does this listing have?</span>
+          <input type="text" name="number_of_reviews">
+        </label>
+        <label><span>How would you characterize your cancellation policy?</span>
+          <select name="cancellation_policy">
+              <option value="Strict">Strict</option>
+              <option value="Flexible">Flexible</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Super strict">Super strict</option>
+            </select>
+      </label>
+
       </div>
       <hr>
       <div style="text-align: center;">
