@@ -11,9 +11,8 @@
   </style>
   <body>
     <nav>
-      <!-- <a href="/" class="brand"><span>AirBnB Predictor</span></a> -->
       <a href="/" class="brand"><span><img src="{{url_for('static', filename='airbnb_logo.png')}}" width="100" height="100"/></span></a>
-    
+
       <div class="menu">
         <a href = "/listings">My listings</a>
         <a href = "/about">About</a>
@@ -23,17 +22,16 @@
     </nav>
     <br><br>
     {% block content %}
-    <!-- <h2 style="text-align: center;">Airbnb Predictor!</h2> -->
     <div style="text-align: center;"><img src="{{url_for('static', filename='airbnb_logo.png')}}"/></div>
     <p style="text-align: center;">Enter some information about the property you have listed or would like to list, and we'll tell you the optimal rate to charge.</p>
     <hr>
     <form action="/add_listing", methods="post">
-    <div class = "flex three demo" style="background-color: beige;">
+    <div class = "flex three grow demo" style="background-color: beige;">
         <label><span>Name of listing</span>
-          <input type="text" name="listing_name">
+          <input type="text" name="listing_name" value="{{ listing_name }}">
         </label>
         <label><span>City</span>
-          <select name="city">
+            <select name="city">
             <option value="New York City">New York City</option>
             <option value="Los Angeles">Los Angeles</option>
             <option value="Washington DC">Washington DC</option>
@@ -41,7 +39,7 @@
           </select>
         </label>
         <label><span>Zipcode</span>
-          <input type="text" name="zipcode">
+          <input type="text" name="zipcode" value={{zipcode}}>
         </label>
         <label><span>Description of listing</span>
           <input type="text" name="description">
