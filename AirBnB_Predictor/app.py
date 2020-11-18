@@ -24,7 +24,7 @@ def create_app():
             cancellation_policy= request.values["cancellation_policy"], cleaning_fee= request.values["cleaning_fee"], city=request.values["city"], 
                 description= request.values["description"], host_has_profile_pic= request.values["host_has_profile_pic"], host_identity_verified= request.values["host_identity_verified"], 
                 instant_bookable=request.values["instant_bookable"], number_of_reviews= request.values["number_of_reviews"], 
-            bedrooms= request.values["bedrooms"], beds= request.values["beds"], listing_name= request.values["listing_name"], zipcode= request.values["zipcode"])
+            bedrooms= request.values["bedrooms"], beds= request.values["beds"], name= request.values["listing_name"], zipcode= request.values["zipcode"])
 
         #Display status message
         add_listing_status_message = "Listing successfully added!"
@@ -79,7 +79,7 @@ def create_app():
 
         listing= Listing.query.filter(Listing.listing_name == listing_name).one()
         return render_template("adjust_listing.html", title="Tweak listings", listing_name=listing_name, listing=listing, 
-                                all_cities=cities, property_types = properties, bed_types = beds, cleaning_types = cleaning,
+                                all_cities=cities, property_types = properties, room_types = rooms, bed_types = beds, cleaning_types = cleaning,
                                 pic_types = pic, verified_types = verified, instant_types = instant, cancellation_types = cancellation)
 
     @app.route('/listings/<listing_name>')

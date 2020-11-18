@@ -36,7 +36,7 @@
             {% if listing.city == each_city %}
             <option value="{{ listing.city }}" selected>{{ listing.city }}</option>
             {% else %}
-            <option value="{{ each_city}}">{{ each_city}}</option>
+            <option value="{{ each_city }}">{{ each_city }}</option>
             {% endif %}
             {% endfor %}
           </select>
@@ -45,43 +45,114 @@
           <input type="text" name="zipcode" value="{{ listing.zipcode }}">
         </label>
         <label><span>Description of listing</span>
-          <input type="text">
+            <input type="text" name="description" value="{{ listing.description }}">
         </label>
-        <label><span>Amenities</span><input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc."></label>
-        <label><span>Room type</span>
-            <select>
-                <option>Entire home/apt</option>
-                <option>Private room</option>
-                <option>Shared Room</option>
+          <label><span>Amenities</span>
+            <input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc." name="amenities" value="{{ listing.amenities }}">
+          </label>
+          <label><span>Property type</span>
+            <select name="property_type">
+                {% for each_property in property_types %}
+                {% if listing.property_type == each_property %}
+                <option value="{{ listing.property_type }}" selected>{{ listing.property_type }}</option>
+                {% else %}
+                <option value="{{ each_property }}">{{ each_property }}</option>
+                {% endif %}
+                {% endfor %}
               </select>
+          </label>
+          <label><span>Room type</span>
+            <select name="room_type">
+                {% for each_room in room_types %}
+                {% if listing.room_type == each_room %}
+                <option value="{{ listing.room_type }}" selected>{{ listing.room_type }}</option>
+                {% else %}
+                <option value="{{ each_room }}">{{ each_room }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+            </label>
+          <label><span>Number of bathrooms</span>
+            <input type="text" name="bathrooms" value="{{ listing.bathrooms }}">
+          </label>
+          <label><span>Number of bedrooms</span>
+            <input type="text" name="bedrooms" value="{{ listing.bedrooms }}">
+          </label>
+          <label><span>Number of beds</span>
+            <input type="text" name="beds" value="{{ listing.beds }}">
+          </label>
+          <label><span>What type of bed do you have?</span>
+            <select name="bed_type">
+                {% for each_bed in bed_types %}
+                {% if listing.bed_type == each_bed %}
+                <option value="{{ listing.bed_type }}" selected>{{ listing.bed_type }}</option>
+                {% else %}
+                <option value="{{ each_bed }}">{{ each_bed }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>How many people does your listing accommodate?</span>
+            <input type="text" name="accommodates" value="{{ listing.accommodates }}">
+          </label>
+          <label><span>Do you charge a cleaning fee?</span>
+            <select name="cleaning_fee">
+                {% for each_cleaning in cleaning_types %}
+                {% if listing.cleaning_fee == each_cleaning %}
+                <option value="{{ listing.cleaning_fee }}" selected>{{ listing.cleaning_fee }}</option>
+                {% else %}
+                <option value="{{ each_cleaning }}">{{ each_cleaning }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>Do you have a profile picture?</span>
+            <select name="host_has_profile_pic">
+                {% for each_pic in pic_types %}
+                {% if listing.host_has_profile_pic == each_pic %}
+                <option value="{{ listing.host_has_profile_pic }}" selected>{{ listing.host_has_profile_pic }}</option>
+                {% else %}
+                <option value="{{ each_pic }}">{{ each_pic }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>Are you a verified host?</span>
+            <select name="host_identity_verified">
+                {% for each_verified in verified_types %}
+                {% if listing.host_identity_verified == each_verified %}
+                <option value="{{ listing.host_identity_verified }}" selected>{{ listing.host_identity_verified }}</option>
+                {% else %}
+                <option value="{{ each_verified }}">{{ each_verified }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>Is this listing instant bookable?</span>
+            <select name="instant_bookable">
+                {% for each_bookable in instant_types %}
+                {% if listing.instant_bookable == each_bookable %}
+                <option value="{{ listing.instant_bookable }}" selected>{{ listing.instant_bookable }}</option>
+                {% else %}
+                <option value="{{ each_bookable }}">{{ each_bookable }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>How many reviews does this listing have?</span>
+            <input type="text" name="number_of_reviews" value="{{ listing.number_of_reviews }}">
+          </label>
+          <label><span>How would you characterize your cancellation policy?</span>
+            <select name="cancellation_policy">
+                {% for each_cancellation in cancellation_types %}
+                {% if listing.cancellation_policy == each_cancellation %}
+                <option value="{{ listing.cancellation_policy }}" selected>{{ listing.cancellation_policy }}</option>
+                {% else %}
+                <option value="{{ each_cancellation }}">{{ each_cancellation }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
         </label>
-        <label><span>Number of bathrooms</span><input type="text"></label>
-        <label><span>Number of bedrooms</span><input type="text"></label>
-        <label><span>Number of beds</span><input type="text"></label>
-        <label><span>How many people does your listing accomodate?</span><input type="text"></label>
-        <label><span>Do you charge a cleaning fee?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-        </label>
-        <label><span>Are you a verified host?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-        </label>
-        <label><span>What was the date of this listing's first review?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
-        <label><span>What was the date of this listing's most recent review?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
-        <label><span>When did you first become a host?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
-        <label><span>Is this listing instant bookable?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-        </label>
-        <label><span>How many reviews does this listing have?</span><input type="text"></label>
-        <label><span>What is your review score rating?</span><input type="text"></label>
       </div>
       <hr>
       <div style="text-align: center;">
