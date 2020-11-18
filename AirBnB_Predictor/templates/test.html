@@ -34,53 +34,101 @@
         </label>
         <label for="city"><span>City</span>
           <select id="city" name="city">
+            <option value="Boston">Boston</option>
             <option value="New York City">New York City</option>
             <option value="Los Angeles">Los Angeles</option>
             <option value="Washington DC">Washington DC</option>
             <option value="Chicago">Chicago</option>
+            <option value="San Francisco">San Francisco</option>
           </select>
         </label>
         <label><span>Zipcode</span>
           <input type="text" name="zipcode">
         </label>
         <label><span>Description of listing</span>
-          <input type="text">
+          <input type="text" name="description">
         </label>
-        <label><span>Amenities</span><input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc."></label>
+        <label><span>Amenities</span>
+          <input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc." name="amenities">
+        </label>
+        <label><span>Property type</span>
+          <select name="property_type">
+            <option value="Apartment">Apartment</option>
+            <option value="Bed & Breakfast">Bed & Breakfast</option>
+            <option value="Bungalow">Bungalow</option>
+            <option value="Condominium">Condominium</option>
+            <option value="Guest House">Guest House</option>
+            <option value="Hostel">Hostel</option>
+            <option value="House">House</option>
+            <option value="Loft">Loft</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
         <label><span>Room type</span>
-            <select>
-                <option>Entire home/apt</option>
-                <option>Private room</option>
-                <option>Shared Room</option>
-              </select>
+          <select name="room_type">
+            <option value="Entire House/apt">Entire House/apt</option>
+            <option value="Private room">Private room</option>
+            <option value="Shared Room">Shared Room</option>
+          </select>
+          </label>
+        <label><span>Number of bathrooms</span>
+          <input type="text" name="bathrooms">
         </label>
-        <label><span>Number of bathrooms</span><input type="text"></label>
-        <label><span>Number of bedrooms</span><input type="text"></label>
-        <label><span>Number of beds</span><input type="text"></label>
-        <label><span>How many people does your listing accomodate?</span><input type="text"></label>
+        <label><span>Number of bedrooms</span>
+          <input type="text" name="bedrooms">
+        </label>
+        <label><span>Number of beds</span>
+          <input type="text" name="beds">
+        </label>
+        <label><span>What type of bed do you have?</span>
+          <select name="bed_type">
+            <option value="Real bed">Real bed</option>
+            <option value="Futon">Futon</option>
+            <option value="Pull-out sofa">Pull-out sofa</option>
+            <option value="Airbed">Airbed</option>
+            <option value="Couch">Couch</option>
+          </select>
+        </label>
+        <label><span>How many people does your listing accommodate?</span>
+          <input type="text" name="accommodates">
+        </label>
         <label><span>Do you charge a cleaning fee?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
+          <select name="cleaning_fee">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <label><span>Do you have a profile picture?</span>
+          <select name="host_has_profile_pic">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </label>
         <label><span>Are you a verified host?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
+          <select name="host_identity_verified">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </label>
-        <label><span>What was the date of this listing's first review?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
-        <label><span>What was the date of this listing's most recent review?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
-        <label><span>When did you first become a host?</span><input type="text" placeholder = "YYYY-MM-DD"></label>
         <label><span>Is this listing instant bookable?</span>
-            <select>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
+          <select name="instant_bookable">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </label>
-        <label><span>How many reviews does this listing have?</span><input type="text"></label>
-        <label><span>What is your review score rating?</span><input type="text"></label>
+        <label><span>How many reviews does this listing have?</span>
+          <input type="text" name="number_of_reviews">
+        </label>
+        <label><span>How would you characterize your cancellation policy?</span>
+          <select name="cancellation_policy">
+            <option value="Flexible">Flexible</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Strict">Strict</option>
+            <option value="Super strict - 30">Super strict - 30</option>
+            <option value="Super strict - 60">Super strict - 60</option>
+          </select>
+      </label>
       </div>
       <hr>
       <div style="text-align: center;">
