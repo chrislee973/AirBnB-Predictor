@@ -26,21 +26,22 @@ def create_app():
                 description= request.values['description'], host_has_profile_pic= request.values['host_has_profile_pic'], host_identity_verified= request.values['host_identity_verified'], 
                 instant_bookable=request.values['instant_bookable'], number_of_reviews= request.values['number_of_reviews'], 
             bedrooms= request.values['bedrooms'], beds= request.values['beds'], listing_name= request.values['listing_name'], zipcode= request.values['zipcode'])
-        
-        #Display status message
+                
+        #Display listing status message
         add_listing_status_message = "Listing successfully added!"
 
-        return render_template('test.html', title='Home', listings=Listing.query.all(), add_listing_status_message = add_listing_status_message)       
+        return render_template('test.html', title='Home', listings=Listing.query.all(), add_listing_status_message=add_listing_status_message)       
+        #return request.values['city']
 
 
     #When user clicks "Predict rate" button
     @app.route('/predict', methods=['POST', 'GET'])
     def predict():
-        #prediction = predict_rate(listing_name)
-        prediction = 213
-        predict_message = f"Your optimal nightly rate is ${prediction}."
-        return render_template('test.html', title='Home', predict_message=predict_message)
-        #return request.values['city']
+        prediction = predict_rate()
+        #prediction = 213
+        #predict_message = f"Your optimal nightly rate is ${prediction}."
+        #return render_template('test.html', title='Home', predict_message=predict_message)
+        return str(prediction)
 
 
     #When user clicks "+ New listing" button

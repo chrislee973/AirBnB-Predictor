@@ -6,7 +6,7 @@ DB = SQLAlchemy()
 
 features = ['property_type', 'room_type', 'amenities', 'accommodates', 'bathrooms', 'bed_type', 'cancellation_policy', 'cleaning_fee', 'city', 
                 'description', 'host_has_profile_pic', 'host_identity_verified', 
-                'instant_bookable', 'listing_name', 'number_of_reviews', 'bedrooms', 'beds', 'listing_name', 'zipcode']
+                'instant_bookable', 'number_of_reviews', 'bedrooms', 'beds', 'listing_name', 'zipcode']
 
 
 class Listing(DB.Model): 
