@@ -119,22 +119,20 @@
             </select>
       </label>
 
-      </div>
-      <hr>
-      <div style="text-align: center;">
-        <input name="add_listing_button" type="submit" value="Add listing" style="background-color: #85144b;">
-        <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
     </div>
-    </form>
-
-  <div style="text-align: center;">
-    <a href="/predict" class="button" style="background-color: #85144b;">Predict rate</a>
+    <hr>
+    <div style="text-align: center;">
+      <input name="add_listing_button" type="submit" value="Add listing" style="background-color: #85144b;">
+      <input name="predict_rate_button" type="submit" value="Predict rate" formaction="/predict" style="background-color: #85144b;">
   </div>
-  <br>
-
+  </form>
+  
   <div style="text-align: center;">
-    <h>{{ predict_message }}</h>
+    <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
+    <p>{{ predict_message }}</p>
   </div>
+
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
   {% endblock %}
   </body>
