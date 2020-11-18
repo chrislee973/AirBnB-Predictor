@@ -43,13 +43,13 @@
           </select>
         </label>
         <label><span>Zipcode</span>
-          <input type="text" name="zipcode">
+          <input type="text" name="zipcode" required>
         </label>
         <label><span>Description of listing</span>
-          <input type="text" name="description">
+          <input type="text" name="description" required>
         </label>
         <label><span>Amenities</span>
-          <input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc." name="amenities">
+          <input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc." name="amenities" required>
         </label>
         <label><span>Property type</span>
           <select name="property_type">
@@ -73,13 +73,13 @@
           </select>
           </label>
         <label><span>Number of bathrooms</span>
-          <input type="text" name="bathrooms">
+          <input type="text" name="bathrooms" required>
         </label>
         <label><span>Number of bedrooms</span>
-          <input type="text" name="bedrooms">
+          <input type="text" name="bedrooms" required>
         </label>
         <label><span>Number of beds</span>
-          <input type="text" name="beds">
+          <input type="text" name="beds" required>
         </label>
         <label><span>What type of bed do you have?</span>
           <select name="bed_type">
@@ -91,7 +91,7 @@
           </select>
         </label>
         <label><span>How many people does your listing accommodate?</span>
-          <input type="text" name="accommodates">
+          <input type="text" name="accommodates" required>
         </label>
         <label><span>Do you charge a cleaning fee?</span>
           <select name="cleaning_fee">
@@ -118,7 +118,7 @@
           </select>
         </label>
         <label><span>How many reviews does this listing have?</span>
-          <input type="text" name="number_of_reviews">
+          <input type="text" name="number_of_reviews" required>
         </label>
         <label><span>How would you characterize your cancellation policy?</span>
           <select name="cancellation_policy">
@@ -133,18 +133,15 @@
       <hr>
       <div style="text-align: center;">
         <input name="add_listing_button" type="submit" value="Add listing" style="background-color: #85144b;">
-        <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
-    </div>
+        <input name="predict_rate_button" type="submit" value="Predict rate" formaction="/predict" style="background-color: #85144b;">
+      </div>
     </form>
 
-  <div style="text-align: center;">
-    <a href="/predict" class="button" style="background-color: #85144b;">Predict rate</a>
-  </div>
-  <br>
+    <div style="text-align: center;">
+      <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
+      <p>{{ predict_message}}</p>
+    </div>
 
-  <div style="text-align: center;">
-    <h>{{ predict_message }}</h>
-  </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
   {% endblock %}
   </body>
