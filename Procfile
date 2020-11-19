@@ -1,0 +1,1 @@
+web: gunicor AirBnB_Predicotr:APP -t 120
