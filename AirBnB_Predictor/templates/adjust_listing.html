@@ -24,7 +24,7 @@
     <br><br>
     {% block content %}
     <div style="text-align: center;"><img src="{{url_for('static', filename='airbnb_logo.png')}}"/></div>
-    <p style="text-align: center;">Enter some information about the property you have listed or would like to list, and we'll tell you the optimal rate to charge.Note that this will alter {{ listing_name}}'s features. To create a separate listing, click on New Listing.</p>
+    <p style="text-align: center;">Note that this will alter this listing's features. To create a separate listing, click on New Listing.</p>
     <hr>
     <form action="/add_listing", methods="post">
     <div class = "flex three grow demo" style="background-color: beige;">
@@ -157,7 +157,7 @@
       </div>
       <hr>
       <div style="text-align: center;">
-        <input name="add_listing_button" type="submit" value="Add listing" style="background-color: #85144b;">
+        <input name="add_listing_button" type="submit" value="Update listing" style="background-color: #85144b;">
         <input name="predict_rate_button" type="submit" value="Predict rate" formaction="/predict" style="background-color: #85144b;">
       </div>
     </form>
