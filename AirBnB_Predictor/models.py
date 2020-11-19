@@ -13,7 +13,7 @@ class Listing(DB.Model):
     room_type = DB.Column(DB.String)
     amenities = DB.Column(DB.String)
     accommodates = DB.Column(DB.Integer)
-    bathrooms = DB.Column(DB.Float)
+    bathrooms = DB.Column(DB.Integer)
     bed_type = DB.Column(DB.String)
     cancellation_policy = DB.Column(DB.String)
     cleaning_fee = DB.Column(DB.String)
@@ -30,6 +30,7 @@ class Listing(DB.Model):
 
     def __repr__(self):        
         return f"Name: {self.listing_name} --- City: {self.city}"
+
 
 def add_update_listing(property_type, room_type, amenities, accommodates, bathrooms, bed_type, cancellation_policy, cleaning_fee, city,
                     description, host_has_profile_pic, host_identity_verified, instant_bookable, 
