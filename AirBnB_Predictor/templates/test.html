@@ -27,7 +27,7 @@
     <div style="text-align: center;"><img src="{{url_for('static', filename='airbnb_logo.png')}}"/></div>
     <p style="text-align: center;">Enter some information about the property you have listed or would like to list, and we'll tell you the optimal rate to charge.</p>
     <hr>
-    <form action="/add_listing", methods="post">
+    <form action="/add_listing" methods="post">
     <div class = "flex three demo" style="background-color: beige;">
         <label><span>Name of listing</span>
           <input type="text" name="listing_name">
@@ -125,18 +125,21 @@
       <hr>
       <div style="text-align: center;">
         <input name="add_listing_button" type="submit" value="Add listing" style="background-color: #85144b;">
-        <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
+        <input name="predict_rate_button" type="submit" value="Predict rate" formaction="/predict" style="background-color: #85144b;">
     </div>
     </form>
+    
+    <div style="text-align: center;">
+      <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
+      <p>{{ predict_message }}</p>
+    </div>
 
-  <div style="text-align: center;">
+
+  <!-- <div style="text-align: center;">
     <a href="/predict" class="button" style="background-color: #85144b;">Predict rate</a>
   </div>
-  <br>
+  <br> -->
 
-  <div style="text-align: center;">
-    <h>{{ predict_message }}</h>
-  </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
   {% endblock %}
   </body>
