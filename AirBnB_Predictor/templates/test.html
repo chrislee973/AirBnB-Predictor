@@ -16,7 +16,8 @@
     
       <div class="menu">
         <a href = "/listings">My listings</a>
-        <a href = "/about">About</a>
+
+        <a href = "/about" class="button icon-help-circled">About</a>
         <a href='/new_listing' class="button">+ New listing</a>
         <a href="/reset" class="button">Reset DB</a>
       </div>
@@ -27,69 +28,83 @@
     <div style="text-align: center;"><img src="{{url_for('static', filename='airbnb_logo.png')}}"/></div>
     <p style="text-align: center;">Enter some information about the property you have listed or would like to list, and we'll tell you the optimal rate to charge.</p>
     <hr>
-    <form action="/add_listing" methods="post">
-    <div class = "flex three demo" style="background-color: beige;">
+    <form action="/add_listing", methods="post">
+    <div class = "flex three grow demo" style="background-color: beige;">
         <label><span>Name of listing</span>
-          <input type="text" name="listing_name">
+          <input type="text" name="listing_name" required>
         </label>
-        <label><span>City</span>
-          <select name="city">
+        <label for="city"><span>City</span>
+          <select id="city" name="city">
+            <option value="Boston">Boston</option>
             <option value="New York City">New York City</option>
             <option value="Los Angeles">Los Angeles</option>
             <option value="Washington DC">Washington DC</option>
             <option value="Chicago">Chicago</option>
+            <option value="San Francisco">San Francisco</option>
           </select>
         </label>
         <label><span>Zipcode</span>
-          <input type="text" name="zipcode">
+          <input type="text" name="zipcode" required>
         </label>
         <label><span>Description of listing</span>
-          <input type="text" name="description">
+          <input type="text" name="description" required>
         </label>
         <label><span>Amenities</span>
-          <input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc." name="amenities">
+          <input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc." name="amenities" required>
         </label>
         <label><span>Property type</span>
           <select name="property_type">
             <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
+            <option value="Bed & Breakfast">Bed & Breakfast</option>
+            <option value="Bungalow">Bungalow</option>
             <option value="Condominium">Condominium</option>
+            <option value="Guest House">Guest House</option>
+            <option value="Hostel">Hostel</option>
+            <option value="House">House</option>
             <option value="Loft">Loft</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Other">Other</option>
           </select>
         </label>
         <label><span>Room type</span>
-            <select name="room_type">
-              <option value="Entire home/apt">Entire home/apt</option>
-              <option value="Private room">Private room</option>
-              <option value="Shared Room">Shared Room</option>
-            </select>
+          <select name="room_type">
+            <option value="Entire House/apt">Entire House/apt</option>
+            <option value="Private room">Private room</option>
+            <option value="Shared Room">Shared Room</option>
+          </select>
           </label>
         <label><span>Number of bathrooms</span>
-          <input type="text" name="bathrooms">
+          <input type="text" name="bathrooms" required>
         </label>
         <label><span>Number of bedrooms</span>
-          <input type="text" name="bedrooms">
+          <input type="text" name="bedrooms" required>
         </label>
         <label><span>Number of beds</span>
-          <input type="text" name="beds">
+          <input type="text" name="beds" required>
         </label>
         <label><span>What type of bed do you have?</span>
           <select name="bed_type">
-              <option value="Real bed">Real bed</option>
-              <option value="Futon">Futon</option>
-              <option value="Pull out sofa">Pull out sofa</option>
-              <option value="Airbed">Airbed</option>
-              <option value="Couch">Couch</option>
-            </select>
-      </label>
+            <option value="Real bed">Real bed</option>
+            <option value="Futon">Futon</option>
+            <option value="Pull-out sofa">Pull-out sofa</option>
+            <option value="Airbed">Airbed</option>
+            <option value="Couch">Couch</option>
+          </select>
+        </label>
         <label><span>How many people does your listing accommodate?</span>
-          <input type="text" name="accommodates">
+          <input type="text" name="accommodates" required>
         </label>
         <label><span>Do you charge a cleaning fee?</span>
-            <select name="cleaning_fee">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
+          <select name="cleaning_fee">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <label><span>Do you have a profile picture?</span>
+          <select name="host_has_profile_pic">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </label>
         <label><span>Do you have a profile picture?</span>
           <select name="host_has_profile_pic">
@@ -98,47 +113,41 @@
             </select>
       </label>
         <label><span>Are you a verified host?</span>
-            <select name="host_identity_verified">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
+          <select name="host_identity_verified">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </label>
         <label><span>Is this listing instant bookable?</span>
-            <select name="instant_bookable">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
+          <select name="instant_bookable">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </label>
         <label><span>How many reviews does this listing have?</span>
-          <input type="text" name="number_of_reviews">
+          <input type="text" name="number_of_reviews" required>
         </label>
         <label><span>How would you characterize your cancellation policy?</span>
           <select name="cancellation_policy">
-              <option value="Strict">Strict</option>
-              <option value="Flexible">Flexible</option>
-              <option value="Moderate">Moderate</option>
-              <option value="Super strict">Super strict</option>
-            </select>
+            <option value="Flexible">Flexible</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Strict">Strict</option>
+            <option value="Super strict - 30">Super strict - 30</option>
+            <option value="Super strict - 60">Super strict - 60</option>
+          </select>
       </label>
-
       </div>
       <hr>
       <div style="text-align: center;">
         <input name="add_listing_button" type="submit" value="Add listing" style="background-color: #85144b;">
         <input name="predict_rate_button" type="submit" value="Predict rate" formaction="/predict" style="background-color: #85144b;">
-    </div>
+      </div>
     </form>
-    
+
     <div style="text-align: center;">
       <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
-      <p>{{ predict_message }}</p>
+      <p>{{ predict_message}}</p>
     </div>
-
-
-  <!-- <div style="text-align: center;">
-    <a href="/predict" class="button" style="background-color: #85144b;">Predict rate</a>
-  </div>
-  <br> -->
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
   {% endblock %}
