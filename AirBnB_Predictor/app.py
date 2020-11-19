@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from .models import Listing, DB, add_update_listing
+from.predict import predict_rate
 
 
 def create_app():
@@ -34,10 +35,11 @@ def create_app():
     #When user clicks "Predict rate" button
     @app.route('/predict')
     def predict():
-        #prediction = predict_rate(listing_name)
-        prediction = 213
-        predict_message = f"Your optimal nightly rate is ${prediction}."
-        return render_template('test.html', title='Home', predict_message=predict_message)
+        prediction = predict_rate()
+        #prediction = 213
+        #predict_message = f"Your optimal nightly rate is ${prediction}."
+        #return render_template('test.html', title='Home', predict_message=predict_message)
+        return str(prediction)
 
 
     #When user clicks "+ New listing" button
