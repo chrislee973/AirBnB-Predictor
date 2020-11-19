@@ -14,6 +14,7 @@ flask = "*"
 keras = "*"
 pandas = "*"
 tensorflow = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.8"
