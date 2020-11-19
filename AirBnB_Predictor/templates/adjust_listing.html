@@ -11,7 +11,8 @@
   </style>
   <body>
     <nav>
-      <a href="/" class="brand"><span>AirBnB Predictor</span></a>
+
+      <a href="/" class="brand"><span><img src="{{url_for('static', filename='airbnb_logo.png')}}" width="100" height="100"/></span></a>
 
       <div class="menu">
         <a href = "/listings">My listings</a>
@@ -22,8 +23,8 @@
     </nav>
     <br><br>
     {% block content %}
-    <h2 style="text-align: center;">Airbnb Predictor!</h2>
-    <p style="text-align: center;">Note that this will alter {{ listing_name}}'s features. To create a separate listing, click on New Listing.</p>
+    <div style="text-align: center;"><img src="{{url_for('static', filename='airbnb_logo.png')}}"/></div>
+    <p style="text-align: center;">Enter some information about the property you have listed or would like to list, and we'll tell you the optimal rate to charge.Note that this will alter {{ listing_name}}'s features. To create a separate listing, click on New Listing.</p>
     <hr>
     <form action="/add_listing", methods="post">
     <div class = "flex three grow demo" style="background-color: beige;">
@@ -156,19 +157,16 @@
       </div>
       <hr>
       <div style="text-align: center;">
-        <input name="update_listing_button" type="submit" value="Update listing" style="background-color: #85144b;">
-        <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
-    </div>
+        <input name="add_listing_button" type="submit" value="Add listing" style="background-color: #85144b;">
+        <input name="predict_rate_button" type="submit" value="Predict rate" formaction="/predict" style="background-color: #85144b;">
+      </div>
     </form>
 
-  <div style="text-align: center;">
-    <a href="/predict" class="button" style="background-color: #85144b;">Predict rate</a>
-  </div>
-  <br>
+    <div style="text-align: center;">
+      <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
+      <p>{{ predict_message}}</p>
+    </div>
 
-  <div style="text-align: center;">
-    <h>{{ predict_message }}</h>
-  </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
   {% endblock %}
   </body>

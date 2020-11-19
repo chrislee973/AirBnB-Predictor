@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 
+
 DB = SQLAlchemy()
 
 features = ["property_type", "room_type", "amenities", "accommodates", "bathrooms", "bed_type", "cancellation_policy", "cleaning_fee", "city", 
