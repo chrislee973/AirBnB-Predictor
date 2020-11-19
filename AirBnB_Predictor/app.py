@@ -55,7 +55,6 @@ def create_app():
         verified = ["Yes", "No"]
         instant = ["Yes", "No"]
         cancellation = ["Flexible", "Moderate", "Strict", "Super strict - 30", "Super strict - 60"]
-
         listing= Listing.query.filter(Listing.listing_name == listing_name).one()
         return render_template("adjust_listing.html", title="Tweak listings", listing_name=listing_name, listing=listing, 
                                 all_cities=cities, property_types = properties, room_types = rooms, bed_types = beds, cleaning_types = cleaning,

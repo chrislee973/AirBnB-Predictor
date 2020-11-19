@@ -1,6 +1,7 @@
 {% extends "test.html" %}
 
 {% block content %}
+<br>
 <form action="/adjust_listing/{{ listing.listing_name }}">
     <table class="primary">
         <thead>
@@ -84,6 +85,7 @@
             </tr>
         </tbody>
     </table>
+    <br>
     <input name="adjust_settings_button" type="submit" value="Adjust settings" style="background-color: #85144b;">
 </form>
 {% endblock %}
