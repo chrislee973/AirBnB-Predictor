@@ -1,6 +1,11 @@
 import pickle
 from flask import request
+import keras
+
+
 #model = pickle.load(open("model.p", "rb"))
+model = keras.models.load_model('AirBnB_Predictor/Keras_model')
+
 
 def predict_rate():
     """
@@ -23,3 +28,6 @@ def predict_rate():
     
     #return model.predict(feature_list)
     return feature_list
+
+if __name__ == "__main__":
+    print(model)
