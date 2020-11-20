@@ -26,16 +26,16 @@ def seq_embed(text):
 def encode_desc_amenities(feature_dict):
     """Takes in feature_dict and returns bow representation and embeddings for the "description" and "amenities" features"""
     #Bag of words representation of descsription feature
-    desc_bow = bow(feature_dict['description'][0])
+    desc_bow = bow(feature_dict['description'])
 
     #Bag of words representation of amenities feature
-    amenities_bow = bow(feature_dict['amenities'][0])
+    amenities_bow = bow(feature_dict['amenities'])
 
     #Embedding of description
-    desc_embed = seq_embed(feature_dict['description'][0])
+    desc_embed = seq_embed(feature_dict['description'])
 
     #Embedding of amenities
-    amenities_embed = seq_embed(feature_dict['amenities'][0])
+    amenities_embed = seq_embed(feature_dict['amenities'])
 
     return desc_bow, amenities_bow, desc_embed, amenities_embed
 
