@@ -1,0 +1,45 @@
+{% extends "test.html" %}
+{% block content %}
+<br>
+<h3 style="text-align: center;">Welcome to AirBnB Predictor!</h3>
+    <br>
+    <div id="wrap">
+        <div id="main" style="background-color: beige;">
+            <img src="https://cnet4.cbsistatic.com/img/G5JaS59dbZ8E9ET8M5NTXyydK0A=/940x0/2018/01/18/dc180fc9-3573-4232-a846-373af1585cc7/airbnb-sf.png" alt="AirBnB Listings" class="center">
+            <br>
+            <p>
+                As a host, it can be a fine art trying to decide what price to set for your AirBnB listing.
+                It's hard to get a sense of a competitive market rate for listings with features similar to yours. You want to set a price high enough to return some profit but not too high to send people to your competition.
+                <br><br>
+                Big corporations and businesses with hundreds or even thousands of listings may not need to deal with this.
+                On the other hand, independent mom-and-pop hosts like yourself have to grapple with this catch-22.
+                <br>
+                At AirBnB Predictor, we aim to give you peace of mind on the pricing front by suggesting the optimal price for your listing.
+                Our machine learning model considers the various features of your listing and tells you what the optimal nightly rate should be, allowing you to focus your efforts elsewhere.
+                <br><br>
+                Renters can also use our app to get an idea of the rates they should expect to see for listings with the specific features they have in mind.
+                <br><br>
+                Some of the services our app provides:
+            </p>
+            <ul>
+                <li>Determines optimal price for different properties in five major cities: Boston, New York, LA, Washington, Chicago, and San Francisco</li>
+                <li>Own multiple listings? Save and manage all your listings in the "My listings" page.</li>
+                <li>Click on any listing name to see all the features of that particular listing</li>
+                <li>Made a mistake? Curious about how changing a certain feature of your listing will affect the optimal rate? Customize saved features and see how it affects optimal price.</li>
+                <li>Amenities are important! Be sure to list all your amenities to get a more accurate result</li>
+            </ul>
+            <p>
+                Give us a try today and let us help you create your best listing!
+            </p>
+        </div>
+        <br>
+        <form action="/new_listing">
+            <div style="text-align: center;">
+                <input name="new_listing_button" type="submit" value="Get Started!" style="background-color: #85144b;">
+            </div>
+        </form>
+    </div>
+    <div id="footer" style="font-size: x-small;">
+        Brought to you by James Hagerman, Reid Harris, Christopher Lee, and Ik Okoro
+    </div>
+{% endblock %}

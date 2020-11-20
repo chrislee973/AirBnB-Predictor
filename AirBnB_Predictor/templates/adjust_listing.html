@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AirBnB Predictor - {{ title }}</title>
+    <link rel="stylesheet" href="https://unpkg.com/picnic"/>
+  </head>
+  <style>
+      .myCoolButton {
+    background: #85144b;
+    }
+  </style>
+  <body>
+    <nav>
+
+      <a href="/new_listing" class="brand"><span><img src="{{url_for('static', filename='airbnb_logo.png')}}" width="100" height="100"/></span></a>
+
+      <div class="menu">
+        <a href = "/listings">My listings</a>
+        <a href = "/about">About</a>
+        <a href='/new_listing' class="button">+ New listing</a>
+      </div>
+    </nav>
+    <br><br>
+    {% block content %}
+    <div style="text-align: center;"><img src="{{url_for('static', filename='airbnb_logo.png')}}"/></div>
+    <p style="text-align: center;">Note that this will alter this listing's features. To create a separate listing, click on New Listing.</p>
+    <hr>
+    <form action="/add_listing", methods="post">
+    <div class = "flex three grow demo" style="background-color: beige;">
+        <label><span>Name of listing</span>
+          <input type="text" name="listing_name" value="{{ listing_name }}" readonly>
+        </label>
+        <label for="city"><span>City</span>
+          <select name="city" id="city">
+            {% for each_city in all_cities %}
+            {% if listing.city == each_city %}
+            <option value="{{ listing.city }}" selected>{{ listing.city }}</option>
+            {% else %}
+            <option value="{{ each_city }}">{{ each_city }}</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+        </label>
+        <label><span>Zipcode</span>
+          <input type="text" name="zipcode" value="{{ listing.zipcode }}">
+        </label>
+        <label><span>Description of listing</span>
+            <input type="text" name="description" value="{{ listing.description }}">
+        </label>
+          <label><span>Amenities</span>
+            <input type="text" placeholder="Cable TV, family friendly, washer, dryer, etc." name="amenities" value="{{ listing.amenities }}">
+          </label>
+          <label><span>Property type</span>
+            <select name="property_type">
+                {% for each_property in property_types %}
+                {% if listing.property_type == each_property %}
+                <option value="{{ listing.property_type }}" selected>{{ listing.property_type }}</option>
+                {% else %}
+                <option value="{{ each_property }}">{{ each_property }}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+          </label>
+          <label><span>Room type</span>
+            <select name="room_type">
+                {% for each_room in room_types %}
+                {% if listing.room_type == each_room %}
+                <option value="{{ listing.room_type }}" selected>{{ listing.room_type }}</option>
+                {% else %}
+                <option value="{{ each_room }}">{{ each_room }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+            </label>
+          <label><span>Number of bathrooms</span>
+            <input type="text" name="bathrooms" value="{{ listing.bathrooms }}">
+          </label>
+          <label><span>Number of bedrooms</span>
+            <input type="text" name="bedrooms" value="{{ listing.bedrooms }}">
+          </label>
+          <label><span>Number of beds</span>
+            <input type="text" name="beds" value="{{ listing.beds }}">
+          </label>
+          <label><span>What type of bed do you have?</span>
+            <select name="bed_type">
+                {% for each_bed in bed_types %}
+                {% if listing.bed_type == each_bed %}
+                <option value="{{ listing.bed_type }}" selected>{{ listing.bed_type }}</option>
+                {% else %}
+                <option value="{{ each_bed }}">{{ each_bed }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>How many people does your listing accommodate?</span>
+            <input type="text" name="accommodates" value="{{ listing.accommodates }}">
+          </label>
+          <label><span>Do you charge a cleaning fee?</span>
+            <select name="cleaning_fee">
+                {% for each_cleaning in cleaning_types %}
+                {% if listing.cleaning_fee == each_cleaning %}
+                <option value="{{ listing.cleaning_fee }}" selected>{{ listing.cleaning_fee }}</option>
+                {% else %}
+                <option value="{{ each_cleaning }}">{{ each_cleaning }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>Do you have a profile picture?</span>
+            <select name="host_has_profile_pic">
+                {% for each_pic in pic_types %}
+                {% if listing.host_has_profile_pic == each_pic %}
+                <option value="{{ listing.host_has_profile_pic }}" selected>{{ listing.host_has_profile_pic }}</option>
+                {% else %}
+                <option value="{{ each_pic }}">{{ each_pic }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>Are you a verified host?</span>
+            <select name="host_identity_verified">
+                {% for each_verified in verified_types %}
+                {% if listing.host_identity_verified == each_verified %}
+                <option value="{{ listing.host_identity_verified }}" selected>{{ listing.host_identity_verified }}</option>
+                {% else %}
+                <option value="{{ each_verified }}">{{ each_verified }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>Is this listing instant bookable?</span>
+            <select name="instant_bookable">
+                {% for each_bookable in instant_types %}
+                {% if listing.instant_bookable == each_bookable %}
+                <option value="{{ listing.instant_bookable }}" selected>{{ listing.instant_bookable }}</option>
+                {% else %}
+                <option value="{{ each_bookable }}">{{ each_bookable }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+          </label>
+          <label><span>How many reviews does this listing have?</span>
+            <input type="text" name="number_of_reviews" value="{{ listing.number_of_reviews }}">
+          </label>
+          <label><span>How would you characterize your cancellation policy?</span>
+            <select name="cancellation_policy">
+                {% for each_cancellation in cancellation_types %}
+                {% if listing.cancellation_policy == each_cancellation %}
+                <option value="{{ listing.cancellation_policy }}" selected>{{ listing.cancellation_policy }}</option>
+                {% else %}
+                <option value="{{ each_cancellation }}">{{ each_cancellation }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </label>
+      </div>
+      <hr>
+      <div style="text-align: center;">
+        <input name="update_listing_button" type="submit" value="Update listing" style="background-color: #85144b;">
+        <input name="predict_rate_button" type="submit" value="Predict rate" formaction="/predict" style="background-color: #85144b;">
+      </div>
+    </form>
+
+    <div style="text-align: center;">
+      <p style="color:rgb(105, 204, 105) ;">{{ update_listing_status_message }}</p>
+      <p><b>{{ predict_message}}</b></p>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
+  {% endblock %}
+  </body>
+</html>

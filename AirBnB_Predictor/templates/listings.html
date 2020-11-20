@@ -1,0 +1,37 @@
+<!--User is brought to this page when they click "My listings". It will display a table of all their listings along with their attributes.-->
+<!--It will display the listing name as well as price. Next to that will be a button that lets them tweak several properties to see how it would affect the rate-->
+{% extends "test.html" %}
+
+{% block content %}
+<br><br>
+<p>Below are your listings. Feel free to select any of them and tweak their properties to see how it would affect the optimal rate.</p>
+
+{% for listing in listings %}
+<form action="/adjust_listing/{{ listing.listing_name }}" methods="post">
+<article class="card">
+    <header>
+        <h2 name="listing_name" value="{{ listing.listing_name }}"><a href="/listings/{{ listing.listing_name }}">{{ listing.listing_name }}</a></h2>
+    </header>
+    <footer>
+        <table class="primary">
+            <thead>
+              <tr>
+                <th style="background-color: #85144b;">City</th>
+                <th style="background-color: #85144b;">Zipcode</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ listing.city }}</td>
+                <td>{{ listing.zipcode }}</td>
+              </tr>
+            </tbody>
+        </table>
+        <input name="adjust_settings_button" type="submit" value="Adjust settings" style="background-color: #85144b;">
+        <input name="delete_listing_button" type="submit" value="Delete listing" formaction="/delete_listing/{{ listing.listing_name }}" style="background-color: #85144b;">
+      </footer>
+</article>
+</form>
+<br><br>
+{% endfor %}
+{% endblock %}
