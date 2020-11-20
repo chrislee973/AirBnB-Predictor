@@ -2,12 +2,13 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from .models import Listing, DB, add_update_listing
 from.predict import predict_rate
+from os import getenv
 
 
 
 def create_app():
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
+    app.config["SQLALCHEMY_DATABASE_URI"] = getenv(DATABASE_URL)
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     DB.init_app(app)
 
