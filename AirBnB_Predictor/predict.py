@@ -103,7 +103,6 @@ def predict_rate():
     #Predict
     prediction = model.predict(([desc_bow, amenities_bow]+ [desc_embed, amenities_embed]+ [df]))
 
-    #return feature_dict
     return int(prediction)
 
 
