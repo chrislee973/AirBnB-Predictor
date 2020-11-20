@@ -8,18 +8,66 @@
       .myCoolButton {
     background: #85144b;
     }
+
+    #wrap {min-height: 100%;}
+
+    #main {
+    overflow:auto;
+	padding-bottom: 20px; /* must be same height as the footer */
+    }
+
+    #footer {
+    position: relative;
+    margin-top: -20px; /* negative value of footer height */
+    height: 20px;
+    clear:both;
+    }
+
+    .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+
+    #alertbox {
+    border-radius: 3px;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    padding: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0,0,0,.7);
+    }
   </style>
+
+<script>
+  var timer;
+  function flash(add_listing_status_message){
+  var alertbox = document.getElementById('alertbox');
+  alertbox.innerHTML = add_listing_status_message;
+  alertbox.style.visibility = 'visible';
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+  alertbox.style.visibility = 'hidden';
+  }, 2000);
+  }
+</script>
+
   <body>
     <nav>
       <!-- <a href="/" class="brand"><span>AirBnB Predictor</span></a> -->
-      <a href="/" class="brand"><span><img src="{{url_for('static', filename='airbnb_logo.png')}}" width="100" height="100"/></span></a>
+      <a href="/new_listing" class="brand"><span><img src="{{url_for('static', filename='airbnb_logo.png')}}" width="100" height="100"/></span></a>
     
       <div class="menu">
         <a href = "/listings">My listings</a>
 
         <a href = "/about" class="button icon-help-circled">About</a>
         <a href='/new_listing' class="button">+ New listing</a>
-        <a href="/reset" class="button">Reset DB</a>
       </div>
     </nav>
     <br><br>
@@ -139,9 +187,15 @@
     </form>
 
     <div style="text-align: center;">
-      <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p>
+      <!-- <p style="color:rgb(105, 204, 105) ;">{{ add_listing_status_message }}</p> -->
       <p><b>{{ predict_message}}</b></p>
     </div>
+
+    <div id='alertbox'>
+      {% if add_listing_status_message %}
+        <script>flash("{{ add_listing_status_message }}")</script>
+      {% endif %}
+      </div>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
   {% endblock %}

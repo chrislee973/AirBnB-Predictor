@@ -7,10 +7,10 @@
 <p>Below are your listings. Feel free to select any of them and tweak their properties to see how it would affect the optimal rate.</p>
 
 {% for listing in listings %}
-<form action="/adjust_listing/{{ listing.listing_name }}">
+<form action="/adjust_listing/{{ listing.listing_name }}" methods="post">
 <article class="card">
     <header>
-        <h2 name="listing_name"><a href="/listings/{{ listing.listing_name }}">{{ listing.listing_name }}</a></h2>
+        <h2 name="listing_name" value="{{ listing.listing_name }}"><a href="/listings/{{ listing.listing_name }}">{{ listing.listing_name }}</a></h2>
     </header>
     <footer>
         <table class="primary">
@@ -28,6 +28,7 @@
             </tbody>
         </table>
         <input name="adjust_settings_button" type="submit" value="Adjust settings" style="background-color: #85144b;">
+        <input name="delete_listing_button" type="submit" value="Delete listing" formaction="/delete_listing/{{ listing.listing_name }}" style="background-color: #85144b;">
       </footer>
 </article>
 </form>
