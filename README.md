@@ -2,27 +2,27 @@
 
 ### An application to predict the price of AirBnb lisings.
 
-It can be a fine art trying to decide what price to set for your AirBnB listing. You want to set a price hight enough to return some profit but not too high to send people to your competition.
+As a host, it can be a fine art trying to decide what price to set for your AirBnB listing. It's hard to get a sense of a competitive market rate for listings with features similar to yours. You want to set a price high enough to return some profit but not too high to send people to your competition.
 
-Big corporations and businesses taking advantage of the tourism market with multiple listings may not need to deal with this. On the other hand, there are a lot of local mom-and-pop listers grappling with this catch-22. Several blogs and articles exist online on possible best practices and criteria to consider before setting a price.
+Big corporations and businesses with hundreds or even thousands of listings may not need to deal with this. On the other hand, independent mom-and-pop hosts like yourself have to grapple with this catch-22.
 
-At AirBnB Predictor, we aim to give you peace of mind on the pricing front by revealing the optimal price for your listing. Our model considers the various features of your listing and tells you what the optimal listing price should be, allowing yout to focus your efforts elsewhere.
+At AirBnB Predictor, we aim to give you peace of mind on the pricing front by suggesting the optimal price for your listing. Our machine learning model considers the various features of your listing and tells you what the optimal nightly rate should be, allowing you to focus your efforts elsewhere.
 
-Renters can also use our app to have an idea of the optimal listing price to search for with the features they'd like to have.
+Renters can also use our app to get an idea of the rates they should expect to see for listings with the specific features they have in mind.
 
 Some of the services our app provides:
 
 * Determines optimal price for different property types in five major cities: Boston, new York, LA, Washington, Chicago, and San Francisco.
-* Save multiple properties and see them in my listings.
+* Own multiple listings? Save and manage all your listings in the "My listings" page.
 * Click on any listing name to see all the features of that particular listing.
-* Made a mistake or changed a feature? Customize saved features and see how it affects optimal price with Adjust Settings.
+* Made a mistake? Curious about how changing a certain feature of your listing will affect the optimal rate? Customize saved features and see how it affects optimal price.
 * Amenities are important! Be sure to list all your amenities to get a more accurate result.
 
 Check out [our app](https://airbnbpredictor.herokuapp.com/) today and let us help you create your best listing!
 
-## For the technical savvy
+## Machine Learning pipeline
 
-We used a keras model to perform NLP on the Description and Amenities features. Our app takes both inputs and runs it through the BOW and sequence embedding functions before passing it to the model. We performed ordinal encoding on the categorical columns making everything numerical before passing into the model. Check out the notebook for the steps taken.
+Because Airbnb listing information contains a mixture of categorical and text data(like the description of the listing), we made a Keras model that can take in and make predictions on both text and numerical/categorical data. Because our model is required to work with multiple data types, we ran the text and categorical data through separate preprocessing pipelines. First, we took the Description and Amenities feataures and fed them through the BOW and sequence embedding functions before finally passing it to the model. We then performed ordinal encoding on the categorical feaetures before passing those into the model. Check out the notebook for the exact steps taken.
 
 
 ### Data
