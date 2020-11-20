@@ -1,1 +1,2 @@
-web: gunicor AirBnB_Predicotr:APP -t 120
+web: gunicorn AirBnB_Predictor:APP -t 120
+

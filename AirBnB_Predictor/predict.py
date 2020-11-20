@@ -51,7 +51,7 @@ def encode_cat_features(feature_dict):
                           "cancellation_policy": {"Flexible":0, "Moderate":1, "Strict":2, "Super strict - 30":3, "Super Strict - 60":4}, 
                            "city": {"Boston":0, "Chicago":1, "Washington DC":2, "Los Angeles":3, "New York City":4, "San Francisco":5}, 
                            }
-                           
+
     #Create dataframe of categorical features (all features except for 'description' and 'amenities')
     df = pd.DataFrame.from_dict(feature_dict)
 
@@ -70,12 +70,8 @@ def encode_cat_features(feature_dict):
 
 def predict_rate():
     """
-    
     Grabs form data for each feature that the model takes and then
     appends all the feature data for that particular listing into a list called "feature_list", which is then fed into the model.
-    
-    Example feature list: ['House', 'Shared room', 'Cable TV, Wireless internet, free parking', '5', '3.0', 'Real bed', 
-                            'Flexible', 'Yes', 'Los Angeles', 'Gentle breeze, awesome views', 'No', 'Yes', 'Yes', '50', '4', '3']
 
     Example feature_dict: 'property_type': ['House'], 'room_type': ['Shared room'], 'amenities': ['Cable TV, Wireless internet, free parking'], 
                             'accommodates': ['5'], 'bathrooms': ['3.0'], 'bed_type': ['Real bed'], 'cancellation_policy': ['Flexible'], 
@@ -108,7 +104,7 @@ def predict_rate():
     prediction = model.predict(([desc_bow, amenities_bow]+ [desc_embed, amenities_embed]+ [df]))
 
     #return feature_dict
-    return prediction
+    return int(prediction)
 
 
 if __name__ == "__main__":
