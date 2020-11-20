@@ -15,6 +15,7 @@ def create_app():
     #Home page
     @app.route('/', methods = ['POST', 'GET'])
     def root():
+        DB.drop_all()
         DB.create_all()
         return render_template("test.html", title="Home", listings=Listing.query.all())
        
@@ -39,7 +40,18 @@ def create_app():
         return render_template("listing_features.html", title=f"{listing_name}'s Features", listing_name=listing_name, listing=listing)
 
 
-    #Resets the database (for development troubleshooting purposes only. Take this out when deploying)
+    #When user clicks "Delete listing" button
+    @app.route('/delete_listing/<listing_name>')
+    def delete_listing(listing_name=None, methods=["POST", "GET"]):
+        listing_name = listing_name or request.value["listing_name"]
+        listing = Listing.query.filter(Listing.listing_name == listing_name).first()
+        DB.session.delete(listing)
+        DB.session.commit()
+        add_listing_status_message = "Listing successfully deleted!"
+        return render_template("test.html", Title="Listings", add_listing_status_message = add_listing_status_message)
+
+
+    #Resets the database
     @app.route('/reset')
     def reset():
         DB.drop_all()
@@ -70,7 +82,7 @@ def create_app():
     
 
     @app.route('/about')
-    def aboout():
+    def about():
         return render_template("about.html")
 
     
